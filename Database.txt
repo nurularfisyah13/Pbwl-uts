@@ -1,0 +1,84 @@
+CREATE TABLE tb_novel (
+     id_novel INT(11) NOT NULL AUTO_INCREMENT,
+     nama_novel VARCHAR(20) NOT NULL,
+     penulis VARCHAR(20) NOT NULL,
+     harga INT(11) NOT NULL,
+     stok INT(11) NOT NULL,
+     id_supplier INT(11) NOT NULL,
+     PRIMARY KEY(id_novel)
+     );
+SHOW TABLES;
+DESC tb_novel;
+INSERT INTO tb_novel
+VALUES('1','hujan.jpg','Hujan','Tere Liye','95000','400','41'),
+      ('2','geez.jpg','Geez dan Ann','Nadhifa Allya Tsana','77000','550','42'),
+      ('3','dongeng.jpg','Dongeng-Dongeng Yang Tak Utuh','Boy Chandra','50000','670','43'),
+      ('4','dikta.jpg','Dikta & Hukum','Dhian Farah','85500','200','44'),
+      ('5','garis.jpg','Garis Waktu','Fiersa Besari','85000','630','45');
+SELECT* FROM tb_novel;
+CREATE TABLE tb_transaksi (
+     id_transaksi INT(11) NOT NULL,
+     id_novel INT(11) NOT NULL,
+     id_pembeli INT(11) NOT NULL,
+     tanggal DATE NOT NULL,
+     keterangan VARCHAR(100) NOT NULL,
+     PRIMARY KEY(id_transaksi)
+     );
+SHOW TABLES;
+DESC tb_transaksi;
+INSERT INTO tb_transaksi
+VALUES('21','1','51','2022-01-12','Hujan-Tere Liye, Bumi-Tere Liye'),
+      ('22','2','52','2022-02-13','Kata-Tsana, Geez & Ann-Tsana'),
+      ('23','3','53','2022-03-14','Senja, Hujan & Cerita-Boy Chandra'),
+      ('24','4','54','2022-04-15','Dikta & Hukum-Dhian Farah'),
+      ('25','5','55','2022-05-16','Arah Langkah-Fiersa Besari, Garis Waktu-Fiersa Besari');
+SELECT* FROM tb_transaksi;
+CREATE TABLE tb_pembayaran (
+     id_pembayaran INT(11) NOT NULL,
+     tgl_bayar DATE NOT NULL,
+     total_bayar INT(11) NOT NULL,
+     id_transaksi INT(11) NOT NULL,
+     PRIMARY KEY(id_pembayaran)
+     );
+SHOW TABLES;
+DESC tb_pembayaran;
+INSERT INTO tb_pembayaran
+VALUES('31','2022-05-16','185000','21'),
+      ('32','2022-05-16','157000','22'),
+      ('33','2022-05-16','50000','23'),
+      ('34','2022-05-16','85500','24'),
+      ('35','2022-05-16','160000','25');
+SELECT* FROM tb_pembayaran;
+CREATE TABLE tb_supplier (
+     id_supplier INT(11) NOT NULL,
+     nama_supplier VARCHAR(30) NOT NULL,
+     no_telp CHAR(11) NOT NULL,
+     tanggal DATE NOT NULL,
+     alamat VARCHAR(100) NOT NULL,
+     PRIMARY KEY(id_supplier)
+     );
+SHOW TABLES;
+DESC tb_supplier;
+INSERT INTO tb_supplier
+VALUES('31','Julia Rahma Isniara','082178420909','2022-08-20','Jl.Bukittinggi Binjai Selatan'),
+      ('32','Alvi Syahrin','081278546767','2022-09-21','Jl.Nangka Kel.Tandem Pasar.V'),
+      ('33','Wahab Rangkuti','082159318787','2022-10-22','Jl.Sutomo Binjai Kota'),
+      ('34','Rizqiyatul Laili','081267314545','2022-11-23','Jl.Bantara 8 Kel.Berngam Binjai Kota'),
+      ('35','Alfanny Zuhair','081289546764','2022-05-24','Jl.Timur Kel.Tanah Tinggi Binjai Utara');
+SELECT* FROM tb_supplier;
+CREATE TABLE tb_pembeli (
+     id_pembeli INT(11) NOT NULL,
+     nama_pembeli VARCHAR(30) NOT NULL,
+     no_telp CHAR(14) NOT NULL,
+     alamat VARCHAR(50) NOT NULL,
+     PRIMARY KEY(id_pembeli)
+     );
+SHOW TABLES;
+DESC tb_pembeli;
+INSERT INTO tb_pembeli
+VALUES('51','Nadya Fatyana','081363006439','Jl.Pakan Baru Stabat'),
+      ('52','Mira Pebriani Berutu','082383689881','Jl.Nanjombal Pak-Pak Barat'),
+      ('53','Meilisa Ninta Sari','083188561631','Jl.Gajah Bukit Lawang'),
+      ('54','Erni Khoiriah','085360001324','Jl.Kapten Kota Nopan'),
+      ('55','Dwika Sherliyanda','0895613366533','Jl.Sawi Sawit Sebrang');
+SELECT* FROM tb_pembeli;
